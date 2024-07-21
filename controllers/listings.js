@@ -23,8 +23,6 @@ module.exports.show=async(req,res)=>{
 };
 
 module.exports.create=async (req,res,next)=>{
-    
-    
     let url=req.file.path; 
     let filename=req.file.filename; 
      const newListing= new Listing(req.body.listing);
@@ -97,7 +95,6 @@ module.exports.search=async(req,res)=>{
     const searchConditions = searchFields.map(field => ({
     [field]: { $regex: regex }
     }));
-
     const listings=  await Listing.find({ $or:searchConditions});  
       console.log(listings);
       res.render('listings/index.ejs',{listings});

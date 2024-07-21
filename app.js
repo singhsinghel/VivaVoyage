@@ -1,8 +1,8 @@
 //We will create a new environment variable NODE_ENV after deployment and set it's value to production. Brlow conditiono shows 
 //that the project is not deployed as the NODE_ENV value is not production
-if(process.env.NODE_ENV !='production'){
-    require('dotenv').config();
-}
+
+require('dotenv').config();
+
 const express= require('express');
 const app=express();
 const mongoose=require('mongoose');
@@ -69,7 +69,7 @@ store.on('error',()=>{
 //options for sessions
 const sessionOptions={
     store:store,
-    secret:process.env.SECRET,
+    secret: process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -100,7 +100,6 @@ app.use((req,res,next)=>{
     res.locals.currUser=req.user;
     next();
 });
-
 //used for listing routes
 app.use('/listings',listingsRouter);
 
