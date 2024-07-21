@@ -59,7 +59,7 @@ const { error } = require('console');
 const store=mongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
-        secret:'helloitsankit'
+        secret:'ankit'
     },
     touchAfter:24*3600,
 });
@@ -69,7 +69,7 @@ store.on('error',()=>{
 //options for sessions
 const sessionOptions={
     store:store,
-    secret: process.env.SECRET,
+    secret: 'ankit',
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -92,11 +92,10 @@ passport.deserializeUser(User.deserializeUser()); //to unstore the info regardin
 //flash
 app.use(flash());
 
-//middleware for flash. If any route has the following value, the following flash message will show.
+
 app.use((req,res,next)=>{
     res.locals.success=req.flash('success');
     res.locals.error=req.flash('error');
-    //currUser is used to store the data of user to use it to show login,signin or logout button in ejs.
     res.locals.currUser=req.user;
     next();
 });
