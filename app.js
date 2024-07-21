@@ -59,7 +59,7 @@ const { error } = require('console');
 const store=mongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
-        secret:'ankit'
+        secret:process.env.SESSION_SECRET
     },
     touchAfter:24*3600,
 });
@@ -69,9 +69,9 @@ store.on('error',()=>{
 //options for sessions
 const sessionOptions={
     store:store,
-    secret: 'ankit',
-    resave:false,
-    saveUninitialized:true,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
     cookie:{
         expires:Date.now() +7*24*60*60*1000, //cookie will expire in one week
         maxAge:7*24*60*60*1000, 
