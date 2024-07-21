@@ -2,6 +2,9 @@
   "engines" :{
     "node": "20.12.1"
   },
+  "scripts":{
+    "build":"npm install"
+  },
   "name": "majorproject",
   "version": "1.0.0",
   "description": "",
