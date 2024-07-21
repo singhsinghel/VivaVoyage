@@ -9,6 +9,8 @@ module.exports.signup=async (req,res)=>{
            email:email,
        });
      const registerdUser = await  User.register(newUser,password);
+     res.locals.currUser=registerdUser;
+     console.log(res.locals.currUser);
      req.login(registerdUser,(err)=>{
        if(err)
            next(err); 

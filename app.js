@@ -42,7 +42,7 @@ async function main(){
     await mongoose.connect(dbUrl);
 }
 main().then((res)=>{
-    console.log(res);
+    console.log('connected to db');
 });
 
 app.listen(8080,()=>{
@@ -68,7 +68,7 @@ store.on('error',()=>{
 })
 //options for sessions
 const sessionOptions={
-    store,
+    store:store,
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
@@ -91,13 +91,6 @@ passport.deserializeUser(User.deserializeUser()); //to unstore the info regardin
 
 //flash
 app.use(flash());
-
-//practice route for cookies
-app.get('/cookies',(req,res)=>{
-    res.cookie('name','done');
-    res.send('got it');
-    console.dir(req.cookies);
-})
 
 //middleware for flash. If any route has the following value, the following flash message will show.
 app.use((req,res,next)=>{
