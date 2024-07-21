@@ -1,4 +1,4 @@
-//We will create a new environment variable NODE_ENV after deployment and set it's value to production. Brlow conditiono shows 
+//We will create a new environment variable NODE_ENV after deployment and set it's value to production. Below condition shows 
 //that the project is not deployed as the NODE_ENV value is not production
 
 require('dotenv').config();
@@ -59,7 +59,7 @@ const { error } = require('console');
 const store=mongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
-        secret:'ankit'
+        secret:'helloitsankit'
     },
     touchAfter:24*3600,
 });
@@ -69,7 +69,7 @@ store.on('error',()=>{
 //options for sessions
 const sessionOptions={
     store:store,
-    secret: 'ankit',
+    secret: process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
