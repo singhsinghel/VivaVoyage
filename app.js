@@ -92,13 +92,6 @@ passport.deserializeUser(User.deserializeUser()); //to unstore the info regardin
 //flash
 app.use(flash());
 
-//practice route for cookies
-app.get('/cookies',(req,res)=>{
-    res.cookie('name','done');
-    res.send('got it');
-    console.dir(req.cookies);
-})
-
 //middleware for flash. If any route has the following value, the following flash message will show.
 app.use((req,res,next)=>{
     res.locals.success=req.flash('success');
