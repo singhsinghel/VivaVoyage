@@ -1,0 +1,82 @@
+<% layout('/layout/boilerplate') %>
+<body>
+    <br><br>
+    <h3>Create a new listing</h3>
+    <div class="row offset-2 ">
+
+    <form method="post" action="/listings" novalidate  class="needs-validation" enctype="multipart/form-data">
+    <div class="col-8">
+        <label for="title" class="form-label" >Title</label>
+        <input required class="form-control" type="text" name="listing[title]" id="" placeholder="Enter title" type="text">
+        <div class="valid-feedback"> Available</div>
+        <div class="invalid-feedback"> Title is required</div>
+        <br>
+    </div>
+    <div class="col-8">
+          
+    <label for="description" class="form-label" >Description</label>
+    <input required class="form-control" type="text" name="listing[description]" id="" placeholder="Enter description" type="text">
+    <div class="valid-feedback"> Available</div>
+    <div class="invalid-feedback"> Description is required</div>
+    <br>
+    </div>
+
+    <div class="col-8">
+
+        <label for="category" class="form-label" >Category</label>
+        <select placeholder="Select category" class="form-control"  id="dropdown" name="listing[category]">
+            <option value="Trending">Trending</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Iconic-cities">Iconic cities</option>
+            <option value="Nature">Nature</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing">Amazing pools</option>
+            <option value="Camping">Camping</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+        </select>  
+        <div class="valid-feedback"> Available</div>
+        <div class="invalid-feedback"> Category is required</div>
+        <br>
+    </div>
+ 
+    <div class="col-8">
+        <label for="image" class="form-label" >Upload Image</label>
+        <input class="form-control" type="file" name="listing[image]" id="" placeholder="Enter image url/link" type="text">
+    <div class="valid-feedback"> Available</div>
+    <br>
+    </div>
+
+    <div class="row">
+    <div class="col-md-4">
+        <label for="price" class="form-label" >Price</label>
+        <input required class="form-control" type="text" name="listing[price]" id="" placeholder="Enter price" type="number">
+        <div class="valid-feedback"> Available</div>
+        <div class="invalid-feedback"> Enter price</div>
+        <br>
+
+    </div>
+
+    <div class="col-md-4">
+        <label for="country" class="form-label" >Country</label>
+        <input required class="form-control" type="text" name="listing[country]" id="" placeholder="Enter country" type="text">
+        <div class="valid-feedback"> Available</div>
+        <div class="invalid-feedback"> Enter valid country</div>
+        <br>
+    </div>
+</div>
+
+    <div class="col-8">        
+    <label for="location" class="form-label" >Location</label>
+    <input required class="form-control" type="text" name="listing[location]" id="" placeholder="Enter location" type="text">
+    <div class="valid-feedback"> Available</div>
+    <div class="invalid-feedback"> Location is required</div>
+    <br>
+    </div>
+
+    <button class="btn btn-dark add-btn" type="submit">Submit</button>
+    <br><br>
+</form>
+</div>
+
+</body>

@@ -1,0 +1,32 @@
+<% layout('/layout/boilerplate') %>
+<div class="row mt-3">
+    <h1 class="col-8 offset-3">Sign up on VivaVyouge</h1>
+    <div class="col-8 offset-3 mt-3">
+        <form action="/user/signup" method="post" class="needs-validation" novalidate>
+            <div class="col-8">
+                <label for="username" class="form-label" >Username</label>
+                <input required class="form-control" type="text" name="username" id="username" placeholder="" type="text">
+                <div class="valid-feedback"> Available</div>
+                <div class="invalid-feedback"> Username Is Required is required</div>
+
+            </div>
+
+            <div class="col-8">
+                <label for="email" class="form-label" >Email</label>
+                <input required class="form-control" type="text" name="email" id="email" placeholder="" type="text"> 
+            </div>
+
+            <div class="col-8 mb-2">
+                <label for="password" class="form-label" >Password</label>
+                <input type="password" required class="form-control" type="text" name="password" id="username" placeholder="" >
+                <div class="valid-feedback"> Available</div>
+                <div class="invalid-feedback"> password Is Required is required</div>
+            </div>
+             
+            <div class="col-8">
+                <button  type="submit" class="btn btn-success">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>
+
