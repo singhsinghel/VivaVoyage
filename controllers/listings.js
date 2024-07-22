@@ -29,11 +29,9 @@ module.exports.create=async (req,res,next)=>{
      newListing.image={url,filename};
      newListing.owner=req.user._id;
      await newListing.save();
-     console.log(newListing.category);
      req.flash('success','new listing created!');
      res.redirect('/listings');
 };
-
 module.exports.delete=async(req,res)=>{
     let {id}= req.params;
     await Listing.findByIdAndDelete({_id:id});
@@ -70,7 +68,6 @@ module.exports.update=async(req,res)=>{
     else if(typeof req.file==='undefined')
     throw new ExpressError(400,"Upload Image");
 }
-
 module.exports.category=async (req,res)=>{
     let {cat}=req.params;
     let listings= await Listing.find({category:cat}) ;
