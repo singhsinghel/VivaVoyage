@@ -34,8 +34,8 @@ app.use(express.urlencoded({extended:true}));
 //used to parse cookie . So that it can be accessed.
 app.use(cookieParser());
 
-// const path=require('path');
-// app.set('views',path.join(__dirname,'/views')); 
+const path=require('path');
+app.set('views',path.join(__dirname,'/views')); 
 
 const dbUrl=process.env.AT;
 async function main(){
