@@ -121,29 +121,3 @@ app.use((err,req,res,next)=>{
     console.log(err);
     res.render('error.ejs',{status, message });
 });
-
-const axios = require('axios');
-const crypto=require('crypto');
-// Parameters
-const folder = 'VivaVyouge_DEV';
-const timestamp = Math.floor(Date.now() / 1000);
-
-// Create the string to sign
-const stringToSign = `folder=${folder}&timestamp=${timestamp}`;
-console.log('String to Sign:', stringToSign);
-
-// Generate HMAC using SHA256 and encode to hex
-const calculatedSignature = crypto.createHmac('sha256', process.env.SESSION_SECRET)
-                                  .update(stringToSign)
-                                  .digest('hex');
-
-console.log('Calculated Signature:', calculatedSignature);
-
-// Make the request (adjust URL and method as needed)
-axios.get(`https://example.com/api?folder=${folder}&timestamp=${timestamp}&signature=${calculatedSignature}`)
-    .then(response => {
-        console.log('Response:', response.data);
-    })
-    .catch(error => {
-        console.error('Error:', error.response ? error.response.data : error.message);
-    });
