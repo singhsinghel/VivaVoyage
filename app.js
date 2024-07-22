@@ -56,20 +56,7 @@ const reviewRouter=require('./routes/review.js');
 const userRouter=require('./routes/user.js');
 const { error } = require('console');
 
-const crypto = require('crypto');
 
-// Your secret key
-const secret = process.env.SESSION_SECRET;
-
-// String to sign
-const stringToSign = 'folder=VivaVyouge_DEV&timestamp=1721627098';
-
-// Create HMAC using SHA256 and encode to hex
-const signature = crypto.createHmac('sha256', secret)
-                        .update(stringToSign)
-                        .digest('hex');
-
-console.log(signature);
 const store=mongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
