@@ -17,8 +17,9 @@ body{
 .nav-link{
     color: #222222 !important ;
 }
-.container{
+.container-main{
     flex: 1;
+    min-height: 100vh;
 }
 footer{
     text-align: center;
@@ -93,8 +94,4 @@ footer{
 .review-card{
     margin-bottom: 2rem;
     padding: 1rem;
-}
-#map{
-width: 40vw; 
-height: 20vh;
 }

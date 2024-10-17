@@ -94,7 +94,6 @@ passport.deserializeUser(User.deserializeUser()); //to unstore the info regardin
 //flash
 app.use(flash());
 
-
 app.use((req,res,next)=>{
     res.locals.success=req.flash('success');
     res.locals.error=req.flash('error');
@@ -104,6 +103,9 @@ app.use((req,res,next)=>{
 //used for listing routes
 app.use('/listings',listingsRouter);
 
+app.use('/',(req,res)=>{
+    res.redirect('/listings');
+})
 //used for review routes
 app.use('/listings/:id/review',reviewRouter);
 
