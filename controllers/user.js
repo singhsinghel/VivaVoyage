@@ -10,7 +10,6 @@ module.exports.signup=async (req,res)=>{
        });
      const registerdUser = await  User.register(newUser,password);
      res.locals.currUser=registerdUser;
-     console.log(res.locals.currUser);
      req.login(registerdUser,(err)=>{
        if(err)
            next(err); 
@@ -19,7 +18,6 @@ module.exports.signup=async (req,res)=>{
      })
     } catch (error) {
         req.flash('error',error.message);
-        
         res.redirect('/user/signup');
     }
    }

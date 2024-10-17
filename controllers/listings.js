@@ -23,7 +23,7 @@ module.exports.show=async(req,res)=>{
 };
 
 module.exports.create=async (req,res,next)=>{
-    let url=req.file.path; 
+    let url=req.file.path;
     let filename=req.file.filename; 
      const newListing= new Listing(req.body.listing);
      newListing.image={url,filename};

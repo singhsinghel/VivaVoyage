@@ -37,7 +37,6 @@ module.exports.isOwner=async(req,res,next)=>{
 module.exports. validateListing=(req,res,next)=>{
   //result will check if any wrong data is entered in the database. It  uses joi.
   let result=listingSchema.validate(req.body); 
-  console.log(result);
   //if there will be error, we can throw an error
   if(result.error){
    throw new ExpressError(400,result.error)

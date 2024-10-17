@@ -2,7 +2,6 @@
 //that the project is not deployed as the NODE_ENV value is not production
 
 require('dotenv').config();
-
 const express= require('express');
 const app=express();
 const flash= require('connect-flash');
@@ -13,6 +12,8 @@ const passport= require('passport');
 const LocalStrategy=require('passport-local');
 const User= require('./models/user.js');
 const mongoStore=require('connect-mongo'); //always require express-session first
+const axios=require('axios');
+const schedule=require('node-schedule');
 
 //For overrideing methods in html forms as they only have get and post methods
 const methodOverride=require('method-override');
@@ -25,7 +26,7 @@ app.engine('ejs',ejsMate);
 //Setting view engine as ejs
 app.set('view engine','ejs');
 
-//Too use public folder for styling and functionality
+//To use public folder for styling and functionality
 app.use(express.static('./public'));
 
 //to get data from body of post request req.body
@@ -54,7 +55,7 @@ const ExpressError=require('./utils/ExpressError.js');
 const listingsRouter=require('./routes/listings.js');
 const reviewRouter=require('./routes/review.js');
 const userRouter=require('./routes/user.js');
-const { error } = require('console');
+
 
 
 const store=mongoStore.create({
@@ -109,7 +110,21 @@ app.use('/listings/:id/review',reviewRouter);
 //for user routes
 app.use('/user',userRouter);
 
+const scheduler=schedule.scheduleJob('*/5 * * * *',async()=>{
+    try {
+        await axios.get('https://vivavyouge.onrender.com/ping');
+        console.log('success');
+        
+    } catch (error) {
+        console.log(error.message);
+        
+    }
 
+})
+app.get('/ping',(req,res)=>{
+    res.sendStatus(200);
+
+})
 //used if the request didn't matches to any route, then this route will be called.
 app.all('*',(req,res,next)=>{
     next( new ExpressError(404,"page not found"));
