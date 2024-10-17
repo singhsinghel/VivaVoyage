@@ -55,6 +55,7 @@ const ExpressError=require('./utils/ExpressError.js');
 const listingsRouter=require('./routes/listings.js');
 const reviewRouter=require('./routes/review.js');
 const userRouter=require('./routes/user.js');
+const { error } = require('console');
 
 
 
@@ -110,30 +111,23 @@ app.use('/listings/:id/review',reviewRouter);
 app.use('/user',userRouter);
 
 
-app.use('/',(req,res)=>{
-  res.sendStatus(200);
-})
-
-
 
 const scheduler=schedule.scheduleJob('*/5 * * * *',async()=>{
     try {
         await axios.get('https://vivavyouge.onrender.com/ping');
-        console.log('success');
-        
     } catch (error) {
         console.log(error.message);
-        
     }
 
 })
 app.get('/ping',(req,res)=>{
     res.sendStatus(200);
-
 })
 //used if the request didn't matches to any route, then this route will be called.
-app.all('*',(req,res,next)=>{
-    next( new ExpressError(404,"page not found"));
+app.all('*',(req,res,next,err)=>{
+    console.log(error.message);
+    
+    next( new ExpressError(404,err.message));
 })
 
 // middleware to handle error . Always put in in last.
