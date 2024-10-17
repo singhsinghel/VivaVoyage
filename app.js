@@ -103,14 +103,18 @@ app.use((req,res,next)=>{
 //used for listing routes
 app.use('/listings',listingsRouter);
 
-app.use('/',(req,res)=>{
-    res.redirect('/listings');
-})
 //used for review routes
 app.use('/listings/:id/review',reviewRouter);
 
 //for user routes
 app.use('/user',userRouter);
+
+
+app.use('/',(req,res)=>{
+  res.sendStatus(200);
+})
+
+
 
 const scheduler=schedule.scheduleJob('*/5 * * * *',async()=>{
     try {
