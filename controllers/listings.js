@@ -52,6 +52,7 @@ module.exports.edit=async (req,res)=>{
 }
 
 module.exports.update=async(req,res)=>{
+    console.log(req.body);
     let {id}= req.params;
     if(!req.body.listing)
      throw new ExpressError(400,"send valid data for listing");
@@ -64,6 +65,12 @@ module.exports.update=async(req,res)=>{
    await listing.save();
     req.flash('success','Listing Updated!')
     res.redirect('/listings'); 
+    }
+    else if(!req.file){
+        let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing});
+        await listing.save();
+        req.flash('success','Listing Updated!')
+        res.redirect('/listings'); 
     }
     else if(typeof req.file==='undefined')
     throw new ExpressError(400,"Upload Image");

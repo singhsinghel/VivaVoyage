@@ -43,6 +43,53 @@
                     </div>
                 </div>
 
+                <div class="row mb-3">
+                    <div class="col-12 col-md-8">
+                        <label for="category" class="form-label" >Category</label>
+                        <select placeholder="Select category" class="form-control" id="dropdown" name="listing[category]">
+                            <option selected value="<%= listing.category %>"><%= listing.category %></option>
+                            
+                            <% if (listing.category !== "Trending") { %>
+                                <option value="Trending">Trending</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Rooms") { %>
+                                <option value="Rooms">Rooms</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Iconic-cities") { %>
+                                <option value="Iconic-cities">Iconic cities</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Nature") { %>
+                                <option value="Nature">Nature</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Castles") { %>
+                                <option value="Castles">Castles</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Amazing") { %>
+                                <option value="Amazing">Amazing pools</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Camping") { %>
+                                <option value="Camping">Camping</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Farms") { %>
+                                <option value="Farms">Farms</option>
+                            <% } %>
+                        
+                            <% if (listing.category !== "Arctic") { %>
+                                <option value="Arctic">Arctic</option>
+                            <% } %>
+                        </select>
+                        
+                        <div class="valid-feedback">Available</div>
+                    </div>
+                </div>
+
                 <!-- Price and Country -->
                 <div class="row">
                     <!-- Price -->
