@@ -112,17 +112,17 @@ app.use('/user',userRouter);
 
 
 
-const scheduler=schedule.scheduleJob('*/5 * * * *',async()=>{
-    try {
-        await axios.get('https://vivavyouge.onrender.com/ping');
-    } catch (error) {
-        console.log(error.message);
-    }
+// const scheduler=schedule.scheduleJob('*/5 * * * *',async()=>{
+//     try {
+//         await axios.get('https://vivavyouge.onrender.com/ping');
+//     } catch (error) {
+//         console.log(error.message);
+//     }
 
-})
-app.get('/ping',(req,res)=>{
-    res.sendStatus(200);
-})
+// })
+// app.get('/ping',(req,res)=>{
+//     res.sendStatus(200);
+// })
 //used if the request didn't matches to any route, then this route will be called.
 app.all('*',(req,res,next,err)=>{
     console.log(error.message);
